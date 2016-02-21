@@ -3,11 +3,15 @@ var dirty = {};
 var table = null;
 
 function tableCellFor(d) {
-    if (d.name == 'taken') {
+    if (d.name == 'name') {
+        var name = encodeURIComponent(d.name); 
+        var href = 'http://fantasynews.cbssports.com/fantasyfootball/playersearch?sb=1&name='+d.value;
+        return '<a class="player-link" href="'+href+'"" target="_blank">'+d.value+'</a>';
+    } else if (d.name == 'taken') {
         if (d.value) {
-            return '<input type="checkbox" checked/>'
+            return '<input type="checkbox" checked/>';
         } else {
-            return '<input type="checkbox"/>'
+            return '<input type="checkbox"/>';
         }
     } else {
         return d.value; 
